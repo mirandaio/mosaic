@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <title>Mosaic Maker</title>
+  <link rel="stylesheet" href="css/styles.css"/>
+</head>
+<body>
+  <header>
+    <h1>Mosaic Maker</h1>
+  </header>
+  <section>
+    <div id="controls">
+      <label>
+        Upload photo
+        <input type="file" />
+      </label>
+      <button id="process" class="invisible">Process image</button>
+    </div>
+    <div id="drop-zone" class="empty">
+      Drag photo here
+    </div>
+    <div>
+      <canvas id="source"></canvas>
+    </div>
+    <div id="container">
+    </div>
+  </section>
+  <script src="js/script.js"></script>
+</body>
+</html>

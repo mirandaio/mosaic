@@ -1,0 +1,42 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: monospace;
+}
+
+header {
+  margin-bottom: 20px;
+}
+
+h1 {
+  text-align: center;
+}
+
+#controls {
+  text-align: center;
+  margin-bottom: 20px;
+}
+
+#drop-zone {
+  margin: 0 auto;
+  width: 340px;
+  height: 340px;
+  text-align: center;
+  line-height: 340px;
+}
+
+.none {
+  display: none;
+}
+
+.invisible {
+  visibility: hidden;
+}
+
+.empty {
+  border: 10px dashed #50b7c8;
+}
