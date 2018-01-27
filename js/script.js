@@ -1,4 +1,4 @@
-const TILE_WIDTH = 16;
+const TILE_WIDTH = 16; // these values are pixels
 const TILE_HEIGHT = 16;
 
 const source = document.getElementById('source');
@@ -25,22 +25,28 @@ processBtn.addEventListener('click', function(e) {
   let remainderRows = numberRows % numCores;
   const imgData = ctx.getImageData(0, 0, source.width, source.height);
   let promises = [];
-  let y = 0;
+  let y = 0; // vertical offset in pixels of the section to process
 
+  let totalHeight = 0;
   for (let i = 0; i < numCores; i++) {
     let rows = numberRowsPerWorker;
     if (remainderRows > 0) {
       rows++;
       remainderRows--;
     }
-    let height = Math.min(rows * TILE_HEIGHT, result.height - y);
+
+    let height = Math.min(rows * TILE_HEIGHT, result.height - y); // height in pixels of the section
+    totalHeight += height;
     promises.push(partialMosaic(imgData, y, height, TILE_WIDTH, TILE_HEIGHT));
     y += height;
+    if (result.height === y) {
+      break;
+    }
   }
 
   Promise.all(promises).then(function(sections) {
     sections.forEach(function(sectionData) {
-      resultCtx.putImageData(sectionData.imgData, 0, sectionData.y);
+      resultCtx.putImageData(sectionData.mosaicData, 0, sectionData.y);
     });
   });
 });
@@ -51,7 +57,7 @@ function partialMosaic(imgData, y, height, tileWidth, tileHeight) {
 
     mosaicWorker.addEventListener('message', function(e) {
       resolve({
-        imgData: e.data,
+        mosaicData: e.data,
         y: y
       });
     });
