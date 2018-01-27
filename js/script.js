@@ -27,7 +27,6 @@ processBtn.addEventListener('click', function(e) {
   let promises = [];
   let y = 0; // vertical offset in pixels of the section to process
 
-  let totalHeight = 0;
   for (let i = 0; i < numCores; i++) {
     let rows = numberRowsPerWorker;
     if (remainderRows > 0) {
@@ -36,7 +35,6 @@ processBtn.addEventListener('click', function(e) {
     }
 
     let height = Math.min(rows * TILE_HEIGHT, result.height - y); // height in pixels of the section
-    totalHeight += height;
     promises.push(partialMosaic(imgData, y, height, TILE_WIDTH, TILE_HEIGHT));
     y += height;
     if (result.height === y) {
