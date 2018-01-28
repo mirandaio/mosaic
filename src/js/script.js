@@ -1,5 +1,8 @@
-const TILE_WIDTH = 16; // these values are pixels
-const TILE_HEIGHT = 16;
+import Worker from './mosaic-worker.js';
+import '../css/styles.css';
+
+const TILE_WIDTH = 4; // these values are pixels
+const TILE_HEIGHT = 4;
 
 const source = document.getElementById('source');
 const dropZone = document.getElementById('drop-zone');
@@ -51,7 +54,7 @@ processBtn.addEventListener('click', function(e) {
 
 function partialMosaic(imgData, y, height, tileWidth, tileHeight) {
   return new Promise(function(resolve, reject) {
-    let mosaicWorker = new Worker('js/mosaic-worker.js');
+    let mosaicWorker = new Worker;
 
     mosaicWorker.addEventListener('message', function(e) {
       resolve({
