@@ -40,3 +40,7 @@ h1 {
 .empty {
   border: 10px dashed #50b7c8;
 }
+
+.full {
+  border: 10px dashed #75fe04;
+}

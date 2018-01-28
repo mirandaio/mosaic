@@ -18,6 +18,31 @@ document.querySelector('input').addEventListener('change', function(e) {
   });
 });
 
+dropZone.addEventListener('drop', function(e) {
+  setupCanvas(e.dataTransfer.files[0], source).then(function() {
+    dropZone.classList.add('none');
+    processBtn.classList.remove('invisible');
+  });
+});
+
+dropZone.addEventListener('dragenter', function(e) {
+  this.classList.remove('empty');
+  this.classList.add('full');
+});
+
+dropZone.addEventListener('dragleave', function(e) {
+  this.classList.remove('full');
+  this.classList.add('empty');
+});
+
+window.addEventListener('drop', function(e) {
+  e.preventDefault();
+});
+
+window.addEventListener('dragover', function(e) {
+  e.preventDefault();
+});
+
 processBtn.addEventListener('click', function(e) {
   const ctx = source.getContext('2d');
   result.width = source.width;
