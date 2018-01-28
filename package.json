@@ -4,7 +4,7 @@
   "description": "A mosaic maker",
   "main": "index.js",
   "scripts": {
-    "build": "webpack -p"
+    "build": "webpack"
   },
   "repository": {
     "type": "git",
