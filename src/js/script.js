@@ -49,7 +49,9 @@ processBtn.addEventListener('click', function(e) {
   result.height = source.height;
   const resultCtx = result.getContext('2d');
   const numberRows = Math.ceil(source.height / TILE_HEIGHT);
-  const numberRowsPerWorker = Math.floor(source.height / (TILE_HEIGHT * numCores));
+  const numberRowsPerWorker = Math.floor(
+    source.height / (TILE_HEIGHT * numCores)
+  );
   let remainderRows = numberRows % numCores;
   const imgData = ctx.getImageData(0, 0, source.width, source.height);
   let promises = [];
@@ -79,7 +81,7 @@ processBtn.addEventListener('click', function(e) {
 
 function partialMosaic(imgData, y, height, tileWidth, tileHeight) {
   return new Promise(function(resolve, reject) {
-    let mosaicWorker = new Worker;
+    let mosaicWorker = new Worker();
 
     mosaicWorker.addEventListener('message', function(e) {
       resolve({

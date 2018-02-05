@@ -9,7 +9,15 @@ self.addEventListener('message', function(e) {
       const validHeight = getValidSize(row, canvasHeight, tileHeight);
       const validWidth = getValidSize(col, canvasWidth, tileWidth);
       const averages = getAverages(imgData, row, col, validHeight, validWidth); // need to copy this into mosaicArray
-      copyColors(averages, mosaicArray, canvasWidth, row - y, col, validHeight, validWidth);
+      copyColors(
+        averages,
+        mosaicArray,
+        canvasWidth,
+        row - y,
+        col,
+        validHeight,
+        validWidth
+      );
     }
   }
 
@@ -17,8 +25,16 @@ self.addEventListener('message', function(e) {
   self.close();
 });
 
-function copyColors(averages, mosaicArray, sectionWidth, row, col, tileHeight, tileWidth) {
-  const [ r, g, b ] = averages;
+function copyColors(
+  averages,
+  mosaicArray,
+  sectionWidth,
+  row,
+  col,
+  tileHeight,
+  tileWidth
+) {
+  const [r, g, b] = averages;
   for (let y = row; y < row + tileHeight; y++) {
     for (let x = col; x < col + tileWidth; x++) {
       const index = (sectionWidth * y + x) * 4;
@@ -47,7 +63,11 @@ function getAverages(imgData, row, col, tileHeight, tileWidth) {
       b += imgArray[index + 2];
     }
   }
-  return [Math.floor(r / numPixels), Math.floor(g / numPixels), Math.floor(b / numPixels)];
+  return [
+    Math.floor(r / numPixels),
+    Math.floor(g / numPixels),
+    Math.floor(b / numPixels)
+  ];
 }
 
 function getValidSize(offset, canvasSize, tileSize) {
