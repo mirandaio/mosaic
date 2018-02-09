@@ -1,13 +1,11 @@
 import Worker from './mosaic-worker.js';
 import '../css/styles.css';
 
-const TILE_WIDTH = 4; // these values are pixels
-const TILE_HEIGHT = 4;
-
 const source = document.getElementById('source');
+const tileWidthInput = document.querySelector('.tile-width');
+const tileHeightInput = document.querySelector('.tile-height');
 const dropZone = document.getElementById('drop-zone');
 const processBtn = document.getElementById('process-btn');
-const container = document.getElementById('container');
 const result = document.getElementById('result');
 const numCores = navigator.hardwareConcurrency;
 
@@ -44,13 +42,15 @@ window.addEventListener('dragover', function(e) {
 });
 
 processBtn.addEventListener('click', function(e) {
+  const tileWidth = Number.parseInt(tileWidthInput.value, 10);
+  const tileHeight = Number.parseInt(tileHeightInput.value, 10);
   const ctx = source.getContext('2d');
   result.width = source.width;
   result.height = source.height;
   const resultCtx = result.getContext('2d');
-  const numberRows = Math.ceil(source.height / TILE_HEIGHT);
+  const numberRows = Math.ceil(source.height / tileHeight);
   const numberRowsPerWorker = Math.floor(
-    source.height / (TILE_HEIGHT * numCores)
+    source.height / (tileHeight * numCores)
   );
   let remainderRows = numberRows % numCores;
   const imgData = ctx.getImageData(0, 0, source.width, source.height);
@@ -64,8 +64,8 @@ processBtn.addEventListener('click', function(e) {
       remainderRows--;
     }
 
-    let height = Math.min(rows * TILE_HEIGHT, result.height - y); // height in pixels of the section
-    promises.push(partialMosaic(imgData, y, height, TILE_WIDTH, TILE_HEIGHT));
+    let height = Math.min(rows * tileHeight, result.height - y); // height in pixels of the section
+    promises.push(partialMosaic(imgData, y, height, tileWidth, tileHeight));
     y += height;
     if (result.height === y) {
       break;
