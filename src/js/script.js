@@ -4,7 +4,7 @@ import '../css/styles.css';
 const source = document.getElementById('source');
 const tileWidthInput = document.querySelector('.tile-width');
 const tileHeightInput = document.querySelector('.tile-height');
-const dropZone = document.getElementById('drop-zone');
+const dropZone = document.querySelector('.drop-zone');
 const processBtn = document.getElementById('process-btn');
 const result = document.getElementById('result');
 const numCores = navigator.hardwareConcurrency;
@@ -45,6 +45,7 @@ processBtn.addEventListener('click', function(e) {
   const tileWidth = Number.parseInt(tileWidthInput.value, 10);
   const tileHeight = Number.parseInt(tileHeightInput.value, 10);
   const ctx = source.getContext('2d');
+  result.classList.remove('none');
   result.width = source.width;
   result.height = source.height;
   const resultCtx = result.getContext('2d');

@@ -8,8 +8,8 @@
   <header>
     <h1>Mosaic Maker</h1>
   </header>
-  <section>
-    <div id="controls">
+  <main>
+    <div class="controls">
       <label>
         Upload photo
         <input type="file" />
@@ -24,16 +24,13 @@
       </label>
       <button id="process-btn" class="invisible">Process image</button>
     </div>
-    <div id="drop-zone" class="empty">
+    <div class="drop-zone empty">
       Drag photo here
     </div>
-    <div>
+    <div class="container">
       <canvas id="source"></canvas>
+      <canvas class="none" id="result"></canvas>
     </div>
-    <div id="container">
-      <canvas id="result"></canvas>
-    </div>
-  </section>
+  </main>
 </body>
-
 </html>

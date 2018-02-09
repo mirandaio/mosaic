@@ -16,17 +16,22 @@ h1 {
   text-align: center;
 }
 
-#controls {
+.controls {
   text-align: center;
   margin-bottom: 20px;
 }
 
-#drop-zone {
+.drop-zone {
   margin: 0 auto;
   width: 340px;
   height: 340px;
   text-align: center;
   line-height: 340px;
+}
+
+.container {
+  display: flex;
+  justify-content: center;
 }
 
 .none {
