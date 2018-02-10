@@ -7,6 +7,7 @@ const tileHeightInput = document.querySelector('.tile-height');
 const dropZone = document.querySelector('.drop-zone');
 const processBtn = document.getElementById('process-btn');
 const result = document.getElementById('result');
+const downloadButton = document.querySelector('.download-button');
 const numCores = navigator.hardwareConcurrency;
 
 document.querySelector('input').addEventListener('change', function(e) {
@@ -77,6 +78,9 @@ processBtn.addEventListener('click', function(e) {
     sections.forEach(function(sectionData) {
       resultCtx.putImageData(sectionData.mosaicData, 0, sectionData.y);
     });
+    downloadButton.href = result.toDataURL();
+    downloadButton.download = 'cool-mosaic.png';
+    downloadButton.classList.remove('none');
   });
 });
 
