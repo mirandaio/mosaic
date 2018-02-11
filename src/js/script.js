@@ -79,7 +79,7 @@ processBtn.addEventListener('click', function(e) {
       resultCtx.putImageData(sectionData.mosaicData, 0, sectionData.y);
     });
     downloadButton.href = result.toDataURL();
-    downloadButton.download = 'cool-mosaic.png';
+    downloadButton.download = 'mosaic.png';
     downloadButton.classList.remove('none');
   });
 });
