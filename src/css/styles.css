@@ -6,14 +6,19 @@
 
 body {
   font-family: monospace;
+  background-color: rgb(229, 229, 229);
 }
 
 header {
   margin-bottom: 20px;
+  background-color: rgb(238, 255, 1);
+  color: rgb(0, 1, 251);
 }
 
 h1 {
   text-align: center;
+  height: 60px;
+  line-height: 60px;
 }
 
 .controls {
