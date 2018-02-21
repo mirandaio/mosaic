@@ -9,8 +9,15 @@ const processBtn = document.getElementById('process-btn');
 const result = document.getElementById('result');
 const downloadButton = document.querySelector('.download-button');
 const numCores = navigator.hardwareConcurrency;
+const fileInput = document.createElement('input');
 
-document.querySelector('input').addEventListener('change', function(e) {
+fileInput.setAttribute('type', 'file');
+
+document.querySelector('.upload').addEventListener('click', function(e) {
+  fileInput.click();
+});
+
+fileInput.addEventListener('change', function(e) {
   setupCanvas(e.target.files[0], source).then(function() {
     dropZone.classList.add('none');
     processBtn.classList.remove('invisible');
