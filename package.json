@@ -4,6 +4,7 @@
   "description": "A mosaic maker",
   "main": "index.js",
   "scripts": {
+    "start": "webpack-dev-server",
     "build": "webpack",
     "prettier": "prettier --write"
   },
@@ -24,6 +25,7 @@
     "prettier": "^1.10.2",
     "style-loader": "^0.20.1",
     "webpack": "^3.10.0",
+    "webpack-dev-server": "^2.11.1",
     "worker-loader": "^1.1.0"
   }
 }
