@@ -26,15 +26,40 @@ h1 {
   margin-bottom: 20px;
 }
 
+.upload {
+  background-color: #ccc;
+  border: 3px solid #a1a1a1;
+  cursor: pointer;
+  height: 34px;
+  font-family: monospace;
+  font-size: 18px;
+  margin-right: 12px;
+  outline: none;
+  width: 152px;
+}
+
+.upload:hover {
+  border-color: #121212;
+}
+
+label {
+  font-size: 18px;
+}
+
 .tile-width,
 .tile-height {
   background-color: #e5e5e5;
   border: 3px solid #a1a1a1;
+  font-family: monospace;
+  font-size: 18px;
+  height: 34px;
+  text-align: center;
+  width: 64px;
 }
 
 .tile-width:focus,
 .tile-height:focus {
-  border: 0.2rem solid #121212;
+  border-color: #121212;
   outline: none;
 }
 
